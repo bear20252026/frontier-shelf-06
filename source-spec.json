@@ -13,5 +13,12 @@
     "mrdoob/slop-newyork",
     "saharan/works"
   ],
-  "babylonCore": false
+  "babylonCore": false,
+  "demos": 14,
+  "dossiers": [
+    "CodingTrain/Machine-Learning",
+    "KhronosGroup/WebGLDeveloperTools",
+    "KhronosGroup/glTF",
+    "evanw/lightgl.js"
+  ]
 }

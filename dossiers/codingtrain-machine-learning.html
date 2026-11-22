@@ -1,0 +1,77 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Machine-Learning — source dossier — Frontier VI</title>
+<style>
+  :root { --ink:#1b1a17; --muted:#6f6c64; --hair:#d8d4ca; --paper:#f4f2ed; --accent:#202024; }
+  * { box-sizing:border-box; }
+  body { margin:0; background:var(--paper); color:var(--ink); font-family:"Helvetica Neue",Arial,sans-serif; }
+  .wrap { max-width:880px; margin:0 auto; padding:54px 26px 72px; }
+  .kicker { font-family:ui-monospace,SFMono-Regular,Menlo,monospace; font-size:10px; letter-spacing:1.2px; text-transform:uppercase; color:var(--muted); }
+  h1 { margin:14px 0 8px; font-size:clamp(34px,5vw,58px); letter-spacing:-.04em; line-height:.98; font-weight:500; }
+  .lede { max-width:64ch; font-size:14px; line-height:1.75; color:var(--muted); }
+  .bar { display:flex; gap:8px; flex-wrap:wrap; margin:22px 0 8px; }
+  .bar a, .bar span { border:1px solid var(--hair); padding:8px 11px; font-size:10px; font-family:ui-monospace,monospace; letter-spacing:.4px; text-transform:uppercase; color:var(--ink); text-decoration:none; background:rgba(255,255,255,.38); }
+  .bar a:hover { background:#fff; }
+  .note { border-top:1px solid var(--ink); border-bottom:1px solid var(--hair); padding:14px 0; margin:26px 0; font-size:12px; line-height:1.7; color:var(--muted); }
+  .readme { font-size:14px; line-height:1.8; }
+  .readme h2 { font-size:24px; margin:28px 0 10px; letter-spacing:-.02em; }
+  .readme h3 { font-size:18px; margin:22px 0 8px; }
+  .readme p { margin:10px 0; }
+  .readme ul { margin:8px 0 14px 20px; padding:0; }
+  .readme li { margin:4px 0; }
+  .readme code { font-family:ui-monospace,monospace; font-size:12px; background:#e9e5dc; padding:1px 4px; }
+  .readme pre { background:#1b1a17; color:#f4f2ed; padding:14px; overflow:auto; font-size:12px; line-height:1.55; }
+  .readme .ref { color:var(--muted); text-decoration:underline; text-decoration-style:dotted; }
+  details { margin-top:26px; border-top:1px solid var(--hair); padding-top:14px; font-size:12px; }
+  summary { cursor:pointer; font-family:ui-monospace,monospace; color:var(--muted); }
+  details ul { margin:10px 0 0 18px; columns:2; column-gap:28px; }
+  details li { margin:3px 0; overflow-wrap:anywhere; }
+  details a { color:var(--ink); }
+  .back { display:inline-block; margin-top:30px; font-size:11px; font-family:ui-monospace,monospace; color:var(--muted); }
+</style>
+</head>
+<body>
+<div class="wrap">
+  <div class="kicker">Frontier VI · Worlds &amp; wonders · repository record</div>
+  <h1>Machine-Learning</h1>
+  <p class="lede">CodingTrain/Machine-Learning. This is a local source dossier, rendered from the copy held in this room. It does not open the upstream repository and it does not send you to a raw source file.</p>
+  <div class="bar"><span>CodingTrain/Machine-Learning</span><span>local source</span></div>
+  <p class="note">The full repository is vendored at <code>source/vendor/CodingTrain/Machine-Learning</code>.</p>
+  <div class="readme" id="readme"><p>Loading the vendored README…</p></div>
+  <details><summary>Top-level files in this repository</summary><ul><li><a href="../source/vendor/CodingTrain/Machine-Learning/README.md">README.md</a></li><li><a href="../source/vendor/CodingTrain/Machine-Learning/codingdream.jpg">codingdream.jpg</a></li></ul></details>
+  <a class="back" href="../">← Back to Frontier VI</a>
+</div>
+<script>
+(async () => {
+  const base = "../source/vendor/CodingTrain/Machine-Learning/";
+  const names = ["README.md","readme.md","README.adoc","readme.adoc"];
+  let text = "";
+  for (const name of names) {
+    try {
+      const r = await fetch(base + name);
+      if (r.ok) { text = await r.text(); break; }
+    } catch (e) {}
+  }
+  const box = document.getElementById("readme");
+  if (!text) { box.innerHTML = "<p>The vendored copy has no README in the usual names.</p>"; return; }
+  const clean = text.replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;");
+  let html = clean
+    .replace(/!\[[^\]]*\]\([^)]*\)/g, "")
+    .replace(/```[^\n]*\n([\s\S]*?)```/g, (m, c) => "<pre><code>" + c + "</code></pre>")
+    .replace(/^#### (.*)$/gm, "<h4>$1</h4>")
+    .replace(/^### (.*)$/gm, "<h3>$1</h3>")
+    .replace(/^## (.*)$/gm, "<h2>$1</h2>")
+    .replace(/^# (.*)$/gm, "<h2>$1</h2>")
+    .replace(/^\s*[-*] (.*)$/gm, "<li>$1</li>")
+    .replace(/\[([^\]]+)\]\([^)]*\)/g, "<span class=\"ref\">$1</span>")
+    .replace(/`([^`]+)`/g, "<code>$1</code>")
+    .replace(/\*\*([^*]+)\*\*/g, "<b>$1</b>")
+    .replace(/\n{2,}/g, "</p><p>");
+  box.innerHTML = "<p>" + html + "</p>";
+})();
+</script>
+</body>
+</html>
