@@ -1,0 +1,17 @@
+{
+  "volume": "frontier-shelf-06",
+  "entries": 109,
+  "threeExamples": 89,
+  "supplementary": [
+    "BenjaminAster/CSS-Minecraft",
+    "CodingTrain/Machine-Learning",
+    "KhronosGroup/WebGLDeveloperTools",
+    "KhronosGroup/glTF",
+    "dli/paint",
+    "evanw/lightgl.js",
+    "mrdoob/codevember-2026",
+    "mrdoob/slop-newyork",
+    "saharan/works"
+  ],
+  "babylonCore": false
+}

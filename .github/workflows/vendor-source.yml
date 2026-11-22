@@ -1,0 +1,77 @@
+name: Vendor source code
+on:
+  workflow_dispatch:
+permissions:
+  contents: write
+jobs:
+  vendor:
+    runs-on: ubuntu-latest
+    timeout-minutes: 120
+    steps:
+      - uses: actions/checkout@v4
+      - name: Fetch three.js source
+        run: |
+          rm -rf source
+          rm -rf /tmp/three
+          git clone --depth 1 --branch dev --filter=blob:none --sparse https://github.com/bear20252026/three.js.git /tmp/three
+          cd /tmp/three
+          git sparse-checkout set examples build src
+      - name: Assemble the three.js slice
+        run: |
+          mkdir -p source/three
+          cp -a /tmp/three/build source/three/build
+          cp -a /tmp/three/src source/three/src
+          cp -a /tmp/three/examples source/three/examples
+          git -C /tmp/three show HEAD:LICENSE > source/three/LICENSE
+          python3 - <<'PY'
+          from pathlib import Path
+          keep = set(Path('three-example-files.txt').read_text(encoding='utf-8').splitlines())
+          for p in Path('source/three/examples').glob('*.html'):
+              if p.name not in keep:
+                  p.unlink()
+          PY
+          printf 'vendored\n' > source/three/.vendored
+      - name: Fetch supplementary source repositories
+        run: |
+          if [ ! -s vendor-sources.txt ]; then
+            echo "No supplementary repositories."
+            exit 0
+          fi
+          mkdir -p /tmp/vendor
+          while read -r upstream fork; do
+            [ -z "$upstream" ] && continue
+            name=$(echo "$upstream" | tr '/' '_')
+            rm -rf "/tmp/vendor/$name"
+            git clone --depth 1 "https://github.com/bear20252026/$fork.git" "/tmp/vendor/$name"
+            mkdir -p "source/vendor/$upstream"
+            git -C "/tmp/vendor/$name" archive HEAD | tar -x -C "source/vendor/$upstream"
+          done < vendor-sources.txt
+      - name: Fetch Babylon core source
+        run: |
+          if [ ! -f babylon-core.txt ]; then
+            echo "No Babylon source requested."
+            exit 0
+          fi
+          rm -rf /tmp/babylon
+          git clone --depth 1 --branch master --filter=blob:none --sparse https://github.com/bear20252026/Babylon.js.git /tmp/babylon
+          cd /tmp/babylon
+          git sparse-checkout set packages/dev/core/src
+          cd "$GITHUB_WORKSPACE"
+          mkdir -p source/vendor/BabylonJS/Babylon.js
+          cp -a /tmp/babylon/packages/dev/core/src source/vendor/BabylonJS/Babylon.js/src
+          git -C /tmp/babylon show HEAD:license.md > source/vendor/BabylonJS/Babylon.js/license.md
+          git -C /tmp/babylon show HEAD:readme.md > source/vendor/BabylonJS/Babylon.js/readme.md
+          git -C /tmp/babylon show HEAD:NOTICE.md > source/vendor/BabylonJS/Babylon.js/NOTICE.md 2>/dev/null || true
+      - name: Commit and push
+        run: |
+          du -sh source
+          find source/three/examples -maxdepth 1 -name '*.html' | wc -l
+          git config user.name "bear20252026"
+          git config user.email "bear20252026@users.noreply.github.com"
+          git config http.postBuffer 524288000
+          git add source
+          git commit -m "Vendor the source code for this volume" || exit 0
+          for i in 1 2 3; do
+            git push && break
+            sleep 20
+          done
