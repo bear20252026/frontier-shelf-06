@@ -1,0 +1,46 @@
+{
+    "$schema": "https://json-schema.org/draft/2020-12/schema",
+    "$id": "https://schema.khronos.org/gltf/2.0/specification/material.pbrMetallicRoughness.schema.json",
+    "title": "Material PBR Metallic Roughness",
+    "type": "object",
+    "description": "A set of parameter values that are used to define the metallic-roughness material model from Physically-Based Rendering (PBR) methodology.",
+    "$ref": "glTFProperty.schema.json",
+    "properties": {
+        "baseColorFactor": {
+            "type": "array",
+            "items": {
+                "type": "number",
+                "minimum": 0.0,
+                "maximum": 1.0
+            },
+            "description": "The linear factors for the base color of the material.",
+            "default": [ 1.0, 1.0, 1.0, 1.0 ],
+            "minItems": 4,
+            "maxItems": 4
+        },
+        "baseColorTexture": {
+            "title": "Base Color Texture",
+            "$ref": "material.textureInfo.schema.json",
+            "description": "The base color texture binding object."
+        },
+        "metallicFactor": {
+            "type": "number",
+            "description": "The linear factor for the metalness of the material.",
+            "default": 1.0,
+            "minimum": 0.0,
+            "maximum": 1.0
+        },
+        "metallicRoughnessTexture": {
+            "title": "Metallic Roughness Texture",
+            "$ref": "material.textureInfo.schema.json",
+            "description": "The metallic-roughness texture binding object."
+        },
+        "roughnessFactor": {
+            "type": "number",
+            "description": "The linear factor for the roughness of the material.",
+            "default": 1.0,
+            "minimum": 0.0,
+            "maximum": 1.0
+        }
+    }
+}

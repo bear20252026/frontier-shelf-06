@@ -1,0 +1,19 @@
+{
+    "$schema": "https://json-schema.org/draft/2020-12/schema",
+    "$id": "https://schema.khronos.org/gltf/2.0/specification/texture.schema.json",
+    "title": "Texture",
+    "type": "object",
+    "description": "Combination of the texture's source and sampler.",
+    "$ref": "glTFChildOfRootProperty.schema.json",
+    "properties": {
+        "sampler": {
+            "$ref": "glTFid.schema.json",
+            "description": "The index of the sampler."
+        },
+        "source": {
+            "title": "Image",
+            "$ref": "glTFid.schema.json",
+            "description": "The index of the image."
+        }
+    }
+}

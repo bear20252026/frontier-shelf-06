@@ -1,0 +1,6 @@
+{
+    "$schema": "https://json-schema.org/draft/2020-12/schema",
+    "$id": "https://schema.khronos.org/gltf/2.0/specification/extras.schema.json",
+    "title": "Extras",
+    "description": "Application-specific data usually stored as a JSON object."
+}

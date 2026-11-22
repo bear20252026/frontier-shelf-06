@@ -1,0 +1,31 @@
+{
+    "$schema": "https://json-schema.org/draft/2020-12/schema",
+    "$id": "https://schema.khronos.org/gltf/2.0/specification/skin.schema.json",
+    "title": "Skin",
+    "type": "object",
+    "description": "Joints and matrices defining a skin.",
+    "$ref": "glTFChildOfRootProperty.schema.json",
+    "properties": {
+        "inverseBindMatrices": {
+            "title": "Inverse Bind Matrices Accessor",
+            "$ref": "glTFid.schema.json",
+            "description": "The index of the accessor providing the inverse bind matrices. When undefined, all inverse bind matrices are identity."
+        },
+        "joints": {
+            "type": "array",
+            "description": "Indices of the joint nodes.",
+            "items": {
+                "title": "Joint Node",
+                "$ref": "glTFid.schema.json"
+            },
+            "uniqueItems": true,
+            "minItems": 1
+        },
+        "skeleton": {
+            "title": "Skeleton Node",
+            "$ref": "glTFid.schema.json",
+            "description": "The index of the node to use as the skeleton root."
+        }
+    },
+    "required": [ "joints" ]
+}

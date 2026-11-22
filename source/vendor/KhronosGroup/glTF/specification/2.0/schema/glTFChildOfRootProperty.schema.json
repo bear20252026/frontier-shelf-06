@@ -1,0 +1,14 @@
+{
+    "$schema": "https://json-schema.org/draft/2020-12/schema",
+    "$id": "https://schema.khronos.org/gltf/2.0/specification/glTFChildOfRootProperty.schema.json",
+    "title": "glTF Child of Root Property",
+    "type": "object",
+    "description": "Common type for all glTF JSON objects that are elements of top-level arrays.",
+    "$ref": "glTFProperty.schema.json",
+    "properties": {
+        "name": {
+            "type": "string",
+            "description": "The user-defined object name."
+        }
+    }
+}

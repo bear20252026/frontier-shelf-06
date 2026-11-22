@@ -1,0 +1,22 @@
+{
+    "$schema": "https://json-schema.org/draft/2020-12/schema",
+    "$id": "https://schema.khronos.org/gltf/2.0/specification/accessor.sparse.values.schema.json",
+    "title": "Accessor Sparse Values",
+    "type": "object",
+    "description": "The descriptor of the source of replacement elements.",
+    "$ref": "glTFProperty.schema.json",
+    "properties": {
+        "bufferView": {
+            "title": "Buffer View",
+            "$ref": "glTFid.schema.json",
+            "description": "The index of the buffer view containing replacement accessor elements."
+        },
+        "byteOffset": {
+            "type": "integer",
+            "description": "The offset into the buffer view in bytes.",
+            "minimum": 0,
+            "default": 0
+        }
+    },
+    "required": [ "bufferView" ]
+}

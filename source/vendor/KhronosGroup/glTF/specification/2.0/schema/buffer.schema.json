@@ -1,0 +1,22 @@
+{
+    "$schema": "https://json-schema.org/draft/2020-12/schema",
+    "$id": "https://schema.khronos.org/gltf/2.0/specification/buffer.schema.json",
+    "title": "Buffer",
+    "type": "object",
+    "description": "Reference to a binary buffer resource.",
+    "$ref": "glTFChildOfRootProperty.schema.json",
+    "properties": {
+        "byteLength": {
+            "type": "integer",
+            "description": "The length of the buffer in bytes.",
+            "minimum": 1
+        },
+        "uri": {
+            "title": "IRI (or URI)",
+            "type": "string",
+            "description": "The identifier used to retrieve the buffer data.",
+            "format": "iri-reference"
+        }
+    },
+    "required": [ "byteLength" ]
+}

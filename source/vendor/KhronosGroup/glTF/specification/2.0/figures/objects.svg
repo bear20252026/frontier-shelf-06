@@ -1,0 +1,62 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="576" height="569" viewBox="-2 -2 384 379" font-family="sans-serif" text-anchor="middle" font-size="12">
+  <defs>
+    <rect id="r70x30" width="70" height="30" rx="3" ry="3" fill="#e0e0e0" stroke="#000"/>
+    <rect id="r80x30" width="80" height="30" rx="3" ry="3" fill="#f5f5f5" stroke="#000"/>
+    <rect id="r80x60" width="80" height="60" rx="3" ry="3" fill="#f5f5f5" stroke="#000"/>
+    <rect id="r80x95" width="80" height="95" rx="3" ry="3" fill="#f5f5f5" stroke="#000"/>
+    <marker id="m" orient="auto-start-reverse" overflow="visible">
+      <path d="m0 0-6-3 1.75 3L-6 3Z" stroke="#000"/>
+    </marker>
+  </defs>
+  <use href="#r80x95" y="60"/>
+  <text x="40" y="79">Animation</text>
+  <use href="#r70x30" x="5" y="85"/>
+  <text x="40" y="104">Channel</text>
+  <use href="#r70x30" x="5" y="120"/>
+  <text x="40" y="139">Sampler</text>
+  <use href="#r80x30" x="100" y="120"/>
+  <text x="140" y="139">Skin</text>
+  <use href="#r80x30" x="100" y="210"/>
+  <text x="140" y="229">Accessor</text>
+  <use href="#r80x30" x="100" y="270"/>
+  <text x="140" y="289">Buffer View</text>
+  <use href="#r80x30" x="100" y="330"/>
+  <text x="140" y="349">Buffer</text>
+  <use href="#r80x30" x="200"/>
+  <text x="240" y="19">Scene</text>
+  <use href="#r80x30" x="200" y="60"/>
+  <text x="240" y="79">Node</text>
+  <use href="#r80x60" x="200" y="120"/>
+  <text x="240" y="139">Mesh</text>
+  <use href="#r70x30" x="205" y="145"/>
+  <text x="240" y="164">Primitive</text>
+  <use href="#r80x30" x="200" y="300"/>
+  <text x="240" y="319">Sampler</text>
+  <use href="#r80x30" x="300" y="120"/>
+  <text x="340" y="139">Camera</text>
+  <use href="#r80x30" x="300" y="210"/>
+  <text x="340" y="229">Material</text>
+  <use href="#r80x30" x="300" y="270"/>
+  <text x="340" y="289">Texture</text>
+  <use href="#r80x30" x="300" y="330"/>
+  <text x="340" y="349">Image</text>
+  <g fill="none" stroke="#000">
+    <path d="M75 100H90V75H199" marker-end="url(#m)"/>
+    <path d="M75 135H90V195H120v14" marker-end="url(#m)"/>
+    <path d="M140 150v59" marker-end="url(#m)"/>
+    <path d="M140 240v29" marker-end="url(#m)"/>
+    <path d="M140 300v29" marker-end="url(#m)"/>
+    <path d="M240 30v29" marker-end="url(#m)"/>
+    <path d="M220 91V105H140v14" marker-end="url(#m)" marker-start="url(#m)"/>
+    <path d="M240 90v29" marker-end="url(#m)"/>
+    <path d="M228 175V195H160v14" marker-end="url(#m)"/>
+    <path d="M252 175V195H340v14" marker-end="url(#m)"/>
+    <path d="M260 90V105H340v14" marker-end="url(#m)"/>
+    <path d="M280 75a15 15 0 0 0 10.61-25.61" marker-end="url(#m)"/>
+    <path d="M290.61 49.39A15 15 0 0 0 265 60"/>
+    <path d="M300 285H240v14" marker-end="url(#m)"/>
+    <path d="M340 240v29" marker-end="url(#m)"/>
+    <path d="M340 300v29" marker-end="url(#m)"/>
+    <path d="M340 360v15H85V285h14" stroke-dasharray="3 3" marker-end="url(#m)"/>
+  </g>
+</svg>

@@ -1,0 +1,22 @@
+{
+    "$schema": "https://json-schema.org/draft/2020-12/schema",
+    "$id": "https://schema.khronos.org/gltf/2.0/specification/accessor.sparse.schema.json",
+    "title": "Accessor Sparse",
+    "type": "object",
+    "description": "The descriptor of sparsely-encoded accessor elements.",
+    "$ref": "glTFProperty.schema.json",
+    "properties": {
+        "count": {
+            "type": "integer",
+            "description": "The number of replaced accessor elements.",
+            "minimum": 1
+        },
+        "indices": {
+            "$ref": "accessor.sparse.indices.schema.json"
+        },
+        "values": {
+            "$ref": "accessor.sparse.values.schema.json"
+        }
+    },
+    "required": [ "count", "indices", "values" ]
+}

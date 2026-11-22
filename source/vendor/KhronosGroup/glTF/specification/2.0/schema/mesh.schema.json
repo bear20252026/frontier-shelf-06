@@ -1,0 +1,27 @@
+{
+    "$schema": "https://json-schema.org/draft/2020-12/schema",
+    "$id": "https://schema.khronos.org/gltf/2.0/specification/mesh.schema.json",
+    "title": "Mesh",
+    "type": "object",
+    "description": "Mesh primitives to instantiate.",
+    "$ref": "glTFChildOfRootProperty.schema.json",
+    "properties": {
+        "primitives": {
+            "type": "array",
+            "description": "An array of mesh primitives.",
+            "items": {
+                "$ref": "mesh.primitive.schema.json"
+            },
+            "minItems": 1
+        },
+        "weights": {
+            "type": "array",
+            "description": "Default morph target weights. The number of array elements matches the number of morph targets of the mesh.",
+            "items": {
+                "type": "number"
+            },
+            "minItems": 1
+        }
+    },
+    "required": [ "primitives" ]
+}

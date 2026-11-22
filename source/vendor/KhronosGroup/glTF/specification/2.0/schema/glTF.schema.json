@@ -1,0 +1,144 @@
+{
+    "$schema": "https://json-schema.org/draft/2020-12/schema",
+    "$id": "https://schema.khronos.org/gltf/2.0/specification/glTF.schema.json",
+    "title": "glTF",
+    "type": "object",
+    "description": "The root object for a glTF asset.",
+    "$ref": "glTFProperty.schema.json",
+    "properties": {
+        "accessors": {
+            "type": "array",
+            "description": "An array of accessors.",
+            "items": {
+                "$ref": "accessor.schema.json"
+            },
+            "minItems": 1
+        },
+        "animations": {
+            "type": "array",
+            "description": "An array of animations.",
+            "items": {
+                "$ref": "animation.schema.json"
+            },
+            "minItems": 1
+        },
+        "asset": {
+            "$ref": "asset.schema.json"
+        },
+        "bufferViews": {
+            "type": "array",
+            "description": "An array of buffer views.",
+            "items": {
+                "$ref": "bufferView.schema.json"
+            },
+            "minItems": 1
+        },
+        "buffers": {
+            "type": "array",
+            "description": "An array of buffers.",
+            "items": {
+                "$ref": "buffer.schema.json"
+            },
+            "minItems": 1
+        },
+        "cameras": {
+            "type": "array",
+            "description": "An array of cameras.",
+            "items": {
+                "$ref": "camera.schema.json"
+            },
+            "minItems": 1
+        },
+        "extensionsRequired": {
+            "type": "array",
+            "description": "Names of glTF extensions required to properly load the asset.",
+            "items": {
+                "type": "string"
+            },
+            "uniqueItems": true,
+            "minItems": 1
+        },
+        "extensionsUsed": {
+            "type": "array",
+            "description": "Names of glTF extensions used in the asset.",
+            "items": {
+                "type": "string"
+            },
+            "uniqueItems": true,
+            "minItems": 1
+        },
+        "images": {
+            "type": "array",
+            "description": "An array of images.",
+            "items": {
+                "$ref": "image.schema.json"
+            },
+            "minItems": 1
+        },
+        "materials": {
+            "type": "array",
+            "description": "An array of materials.",
+            "items": {
+                "$ref": "material.schema.json"
+            },
+            "minItems": 1
+        },
+        "meshes": {
+            "type": "array",
+            "description": "An array of meshes.",
+            "items": {
+                "$ref": "mesh.schema.json"
+            },
+            "minItems": 1
+        },
+        "nodes": {
+            "type": "array",
+            "description": "An array of nodes.",
+            "items": {
+                "$ref": "node.schema.json"
+            },
+            "minItems": 1
+        },
+        "samplers": {
+            "type": "array",
+            "description": "An array of samplers.",
+            "items": {
+                "$ref": "sampler.schema.json"
+            },
+            "minItems": 1
+        },
+        "scene": {
+            "title": "Scene",
+            "$ref": "glTFid.schema.json",
+            "description": "The index of the default scene."
+        },
+        "scenes": {
+            "type": "array",
+            "description": "An array of scenes.",
+            "items": {
+                "$ref": "scene.schema.json"
+            },
+            "minItems": 1
+        },
+        "skins": {
+            "type": "array",
+            "description": "An array of skins.",
+            "items": {
+                "$ref": "skin.schema.json"
+            },
+            "minItems": 1
+        },
+        "textures": {
+            "type": "array",
+            "description": "An array of textures.",
+            "items": {
+                "$ref": "texture.schema.json"
+            },
+            "minItems": 1
+        }
+    },
+    "dependentRequired": {
+        "scene": [ "scenes" ]
+    },
+    "required": [ "asset" ]
+}

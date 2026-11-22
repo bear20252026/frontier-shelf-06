@@ -1,0 +1,47 @@
+{
+    "$schema": "https://json-schema.org/draft/2020-12/schema",
+    "$id": "https://schema.khronos.org/gltf/2.0/specification/animation.sampler.schema.json",
+    "title": "Animation Sampler",
+    "type": "object",
+    "description": "Combination of timestamps, keyframe data, and the interpolation mode.",
+    "$ref": "glTFProperty.schema.json",
+    "properties": {
+        "input": {
+            "title": "Input Accessor",
+            "$ref": "glTFid.schema.json",
+            "description": "The index of the accessor providing keyframe timestamps."
+        },
+        "interpolation": {
+            "type": "string",
+            "description": "Interpolation mode used to compute animated property values between keyframes.",
+            "default": "LINEAR",
+            "anyOf": [
+                {
+                    "title": "Hermite Cubic Spline",
+                    "const": "CUBICSPLINE",
+                    "description": "Values between the keyframes are interpolated using Hermite cubic splines."
+                },
+                {
+                    "title": "Linear",
+                    "const": "LINEAR",
+                    "description": "Values between the keyframes are interpolated linearly. Rotation values use spherical linear interpolation."
+                },
+                {
+                    "title": "Step",
+                    "const": "STEP",
+                    "description": "Values between the keyframes are equal to the output of the last played keyframe."
+                },
+                {
+                    "title": "Custom Interpolation Mode",
+                    "type": "string"
+                }
+            ]
+        },
+        "output": {
+            "title": "Output Accessor",
+            "$ref": "glTFid.schema.json",
+            "description": "The index of the accessor providing keyframe property values and additional values as needed by the interpolation mode."
+        }
+    },
+    "required": [ "input", "output" ]
+}

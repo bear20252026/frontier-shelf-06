@@ -1,0 +1,47 @@
+{
+    "$schema": "https://json-schema.org/draft/2020-12/schema",
+    "$id": "https://schema.khronos.org/gltf/2.0/specification/image.schema.json",
+    "title": "Image",
+    "type": "object",
+    "description": "Reference to an image resource.",
+    "$ref": "glTFChildOfRootProperty.schema.json",
+    "properties": {
+        "bufferView": {
+            "title": "Buffer View",
+            "$ref": "glTFid.schema.json",
+            "description": "The index of the buffer view that contains the image data. Not applicable to images sourced from IRIs."
+        },
+        "mimeType": {
+            "title": "Media Type",
+            "type": "string",
+            "description": "The media type of the image. Required when the image is sourced from a buffer view.",
+            "anyOf": [
+                {
+                    "title": "JPEG",
+                    "const": "image/jpeg"
+                },
+                {
+                    "title": "PNG",
+                    "const": "image/png"
+                },
+                {
+                    "title": "Custom Media Type",
+                    "type": "string"
+                }
+            ]
+        },
+        "uri": {
+            "title": "IRI (or URI)",
+            "type": "string",
+            "description": "The identifier used to retrieve the image data. Not applicable to images sourced from buffer views.",
+            "format": "iri-reference"
+        }
+    },
+    "dependentRequired": {
+        "bufferView": [ "mimeType" ]
+    },
+    "oneOf": [
+        { "required": [ "bufferView" ] },
+        { "required": [ "uri" ] }
+    ]
+}

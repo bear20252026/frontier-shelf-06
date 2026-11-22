@@ -1,0 +1,47 @@
+{
+    "$schema": "https://json-schema.org/draft/2020-12/schema",
+    "$id": "https://schema.khronos.org/gltf/2.0/specification/accessor.sparse.indices.schema.json",
+    "title": "Accessor Sparse Indices",
+    "type": "object",
+    "description": "The descriptor of the indices of replaced accessor elements.",
+    "$ref": "glTFProperty.schema.json",
+    "properties": {
+        "bufferView": {
+            "title": "Buffer View",
+            "$ref": "glTFid.schema.json",
+            "description": "The index of the buffer view containing the indices of the replaced elements."
+        },
+        "byteOffset": {
+            "type": "integer",
+            "description": "The offset into the buffer view in bytes.",
+            "minimum": 0,
+            "default": 0
+        },
+        "componentType": {
+            "type": "integer",
+            "description": "The data type of the indices of the replaced elements.",
+            "anyOf": [
+                {
+                    "title": "UINT8",
+                    "const": 5121,
+                    "description": "8-bit unsigned integer (uint8)."
+                },
+                {
+                    "title": "UINT16",
+                    "const": 5123,
+                    "description": "16-bit unsigned integer (uint16)."
+                },
+                {
+                    "title": "UINT32",
+                    "const": 5125,
+                    "description": "32-bit unsigned integer (uint32)."
+                },
+                {
+                    "title": "Custom Index Data Type",
+                    "type": "integer"
+                }
+            ]
+        }
+    },
+    "required": [ "bufferView", "componentType" ]
+}

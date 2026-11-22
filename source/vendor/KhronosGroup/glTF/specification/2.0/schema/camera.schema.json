@@ -1,0 +1,35 @@
+{
+    "$schema": "https://json-schema.org/draft/2020-12/schema",
+    "$id": "https://schema.khronos.org/gltf/2.0/specification/camera.schema.json",
+    "title": "Camera",
+    "type": "object",
+    "description": "Camera's parameters.",
+    "$ref": "glTFChildOfRootProperty.schema.json",
+    "properties": {
+        "orthographic": {
+            "$ref": "camera.orthographic.schema.json"
+        },
+        "perspective": {
+            "$ref": "camera.perspective.schema.json"
+        },
+        "type": {
+            "type": "string",
+            "description": "The projection type.",
+            "anyOf": [
+                {
+                    "title": "Orthographic",
+                    "const": "orthographic"
+                },
+                {
+                    "title": "Perspective",
+                    "const": "perspective"
+                },
+                {
+                    "title": "Custom Projection Type",
+                    "type": "string"
+                }
+            ]
+        }
+    },
+    "required": [ "type" ]
+}

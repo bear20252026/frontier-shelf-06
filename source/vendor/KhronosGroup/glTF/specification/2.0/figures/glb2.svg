@@ -1,0 +1,39 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="-1 0 227 44" width="908" height="176" font-size="3" font-family="sans-serif" text-anchor="middle">
+  <defs>
+    <marker id="m" orient="auto-start-reverse" overflow="visible"><path fill="none" stroke="#000" d="m-4-2 4 2-4 2"/></marker>
+    <path id="c" fill="none" stroke="#000" stroke-width=".5" d="M0 0v12h25V0z"/>
+    <text id="u32" fill="#777" font-family="monospace">uint32</text>
+    <text id="u8a" fill="#777" font-family="monospace">uint8[]</text>
+    <g id="c1" font-family="monospace">
+      <path stroke="#000" stroke-width=".5" marker-end="url(#m)" marker-start="url(#m)" d="M.5 -3h24"/>
+      <use href="#c"/>
+      <text x="12.5" y="5">length</text><use href="#u32" x="12.5" y="10"/>
+    </g>
+    <g id="c2" font-family="monospace">
+      <path stroke="#000" stroke-width=".5" marker-end="url(#m)" marker-start="url(#m)" d="M.5 -3h49"/>
+      <use href="#c"/><use href="#c" x="25"/>
+      <text x="12.5" y="5">magic</text><use href="#u32" x="12.5" y="10"/>
+      <text x="37.5" y="5">version</text><use href="#u32" x="37.5" y="10"/>
+    </g>
+    <g id="c3" font-family="monospace">
+      <path stroke="#000" stroke-width=".5" marker-start="url(#m)" marker-end="url(#m)" d="M.5 -3h74"/>
+      <use href="#c"/><use href="#c" x="25"/><use href="#c" x="50"/>
+      <text x="12.5" y="5">chunkLength</text><use href="#u32" x="12.5" y="10"/>
+      <text x="37.5" y="5">chunkType</text><use href="#u32" x="37.5" y="10"/>
+      <text x="62.5" y="5">chunkData</text><use href="#u8a" x="62.5" y="10"/>
+    </g>
+  </defs>
+  <text y="3" x="25">GLB Header</text>
+  <text y="3" x="62.5">Size Header</text>
+  <text y="3" x="112.5">Chunk 0 (JSON)</text>
+  <text y="3" x="187.5">Chunk 1 (Binary Buffer)</text>
+  <use href="#c2" y="9"/>
+  <use href="#c1" y="9" x="50"/>
+  <use href="#c3" y="9" x="75"/>
+  <use href="#c3" y="9" x="150"/>
+  <path fill="none" stroke="#000" stroke-width=".5" marker-mid="url(#m)" d="M137.5 21a37.5 12 0 0 0 18.75 10.392 37.5 12 0 0 0 37.5 0A37.5 12 0 0 0 212.5 21"/>
+  <text y="37" x="175">glTF buffer 0</text>
+  <path stroke="#000" stroke-width=".5" marker-end="url(#m)" d="M137.5 21v11"/>
+  <ellipse cx="137.5" cy="38" fill="none" stroke="#000" stroke-width=".5" rx="10" ry="5"/>
+  <text x="137.5" y="39" font-size="2.5">External Data</text>
+</svg>

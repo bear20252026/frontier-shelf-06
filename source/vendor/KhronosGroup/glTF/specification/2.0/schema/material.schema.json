@@ -1,0 +1,79 @@
+{
+    "$schema": "https://json-schema.org/draft/2020-12/schema",
+    "$id": "https://schema.khronos.org/gltf/2.0/specification/material.schema.json",
+    "title": "Material",
+    "type": "object",
+    "description": "The material parameters.",
+    "$ref": "glTFChildOfRootProperty.schema.json",
+    "properties": {
+        "alphaCutoff": {
+            "type": "number",
+            "minimum": 0.0,
+            "default": 0.5,
+            "description": "The alpha cutoff value. Applies only when the alpha rendering mode is Mask."
+        },
+        "alphaMode": {
+            "type": "string",
+            "default": "OPAQUE",
+            "description": "The alpha rendering mode.",
+            "anyOf": [
+                {
+                    "title": "Blend",
+                    "const": "BLEND",
+                    "description": "The alpha value is used to composite the source and destination areas. The rendered output is combined with the background using the alpha over operator."
+                },
+                {
+                    "title": "Mask",
+                    "const": "MASK",
+                    "description": "If the alpha value is greater than or equal to the alpha cutoff value, the material is rendered as fully opaque; otherwise, it is rendered as fully transparent."
+                },
+                {
+                    "title": "Opaque",
+                    "const": "OPAQUE",
+                    "description": "The alpha value is ignored, and the rendered output is fully opaque."
+                },
+                {
+                    "title": "Custom Alpha Mode",
+                    "type": "string"
+                }
+            ]
+        },
+        "doubleSided": {
+            "type": "boolean",
+            "default": false,
+            "description": "Specifies whether the material is double sided."
+        },
+        "emissiveFactor": {
+            "type": "array",
+            "items": {
+                "type": "number",
+                "minimum": 0.0,
+                "maximum": 1.0
+            },
+            "minItems": 3,
+            "maxItems": 3,
+            "default": [ 0.0, 0.0, 0.0 ],
+            "description": "The linear factors for the emissive color of the material."
+        },
+        "emissiveTexture": {
+            "title": "Emissive Texture",
+            "$ref": "material.textureInfo.schema.json",
+            "description": "The emissive texture binding object."
+        },
+        "normalTexture": {
+            "title": "Normal Texture",
+            "$ref": "material.normalTextureInfo.schema.json",
+            "description": "The tangent-space normal texture binding object."
+        },
+        "occlusionTexture": {
+            "title": "Occlusion Texture",
+            "$ref": "material.occlusionTextureInfo.schema.json",
+            "description": "The occlusion texture binding object."
+        },
+        "pbrMetallicRoughness": {
+            "title": "PBR Metallic Roughness",
+            "$ref": "material.pbrMetallicRoughness.schema.json",
+            "default": {}
+        }
+    }
+}

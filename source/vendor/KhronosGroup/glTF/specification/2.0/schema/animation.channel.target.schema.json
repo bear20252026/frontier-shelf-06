@@ -1,0 +1,42 @@
+{
+    "$schema": "https://json-schema.org/draft/2020-12/schema",
+    "$id": "https://schema.khronos.org/gltf/2.0/specification/animation.channel.target.schema.json",
+    "title": "Animation Channel Target",
+    "type": "object",
+    "description": "The descriptor of the animated property.",
+    "$ref": "glTFProperty.schema.json",
+    "properties": {
+        "node": {
+            "title": "Node",
+            "$ref": "glTFid.schema.json",
+            "description": "The index of the node containing the animated property. When undefined, the target is defined by other means."
+        },
+        "path": {
+            "type": "string",
+            "description": "The identifier of the animated property, such as the property name.",
+            "anyOf": [
+                {
+                    "title": "Rotation",
+                    "const": "rotation"
+                },
+                {
+                    "title": "Scale",
+                    "const": "scale"
+                },
+                {
+                    "title": "Translation",
+                    "const": "translation"
+                },
+                {
+                    "title": "Weights",
+                    "const": "weights"
+                },
+                {
+                    "title": "Custom Path",
+                    "type": "string"
+                }
+            ]
+        }
+    },
+    "required": [ "path" ]
+}

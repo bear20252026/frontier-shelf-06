@@ -1,0 +1,96 @@
+{
+    "$schema": "https://json-schema.org/draft/2020-12/schema",
+    "$id": "https://schema.khronos.org/gltf/2.0/specification/node.schema.json",
+    "title": "Node",
+    "type": "object",
+    "description": "A node in the node hierarchy.",
+    "$ref": "glTFChildOfRootProperty.schema.json",
+    "properties": {
+        "camera": {
+            "title": "Camera",
+            "$ref": "glTFid.schema.json",
+            "description": "The index of the camera."
+        },
+        "children": {
+            "type": "array",
+            "description": "The indices of the node's children.",
+            "items": {
+                "title": "Node",
+                "$ref": "glTFid.schema.json"
+            },
+            "uniqueItems": true,
+            "minItems": 1
+        },
+        "matrix": {
+            "type": "array",
+            "description": "A 4x4 transformation matrix stored in column-major order.",
+            "items": {
+                "type": "number"
+            },
+            "minItems": 16,
+            "maxItems": 16,
+            "default": [ 1.0, 0.0, 0.0, 0.0, 0.0, 1.0, 0.0, 0.0, 0.0, 0.0, 1.0, 0.0, 0.0, 0.0, 0.0, 1.0 ]
+        },
+        "mesh": {
+            "title": "Mesh",
+            "$ref": "glTFid.schema.json",
+            "description": "The index of the mesh."
+        },
+        "rotation": {
+            "type": "array",
+            "description": "The node's unit quaternion rotation in the order (x, y, z, w), where w is the scalar.",
+            "items": {
+                "type": "number",
+                "minimum": -1.0,
+                "maximum": 1.0
+            },
+            "minItems": 4,
+            "maxItems": 4,
+            "default": [ 0.0, 0.0, 0.0, 1.0 ]
+        },
+        "scale": {
+            "type": "array",
+            "description": "The node's non-uniform scale, given as the scaling factors along the x, y, and z axes.",
+            "items": {
+                "type": "number"
+            },
+            "minItems": 3,
+            "maxItems": 3,
+            "default": [ 1.0, 1.0, 1.0 ]
+        },
+        "skin": {
+            "title": "Skin",
+            "$ref": "glTFid.schema.json",
+            "description": "The index of the skin to use for instantiating a mesh."
+        },
+        "translation": {
+            "type": "array",
+            "description": "The node's translation along the x, y, and z axes.",
+            "items": {
+                "type": "number"
+            },
+            "minItems": 3,
+            "maxItems": 3,
+            "default": [ 0.0, 0.0, 0.0 ]
+        },
+        "weights": {
+            "type": "array",
+            "description": "The weights to use for instantiating mesh primitives with morph targets. The number of array elements matches the number of morph targets of the mesh.",
+            "minItems": 1,
+            "items": {
+                "type": "number"
+            }
+        }
+    },
+    "dependentRequired": {
+        "skin": [ "mesh" ],
+        "weights": [ "mesh" ]
+    },
+    "not": {
+        "anyOf": [
+            { "required": [ "matrix", "rotation" ] },
+            { "required": [ "matrix", "scale" ] },
+            { "required": [ "matrix", "translation" ] }
+        ]
+    }
+}
