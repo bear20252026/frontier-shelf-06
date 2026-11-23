@@ -1,0 +1,47 @@
+/* Shared README renderer for Frontier source dossiers. */
+.readme { overflow-wrap: anywhere; }
+.readme a {
+  color: var(--ink);
+  text-decoration: underline;
+  text-decoration-color: rgba(20, 20, 22, .28);
+  text-underline-offset: 2px;
+}
+.readme a:hover { color: var(--accent); text-decoration-color: var(--accent); }
+.readme ul, .readme ol { margin: 8px 0 16px 22px; padding: 0; }
+.readme li { margin: 4px 0; }
+.readme li > ul, .readme li > ol { margin: 6px 0 6px 18px; }
+.readme blockquote {
+  margin: 18px 0;
+  padding: 10px 14px;
+  border-left: 2px solid var(--accent);
+  background: rgba(255, 255, 255, .35);
+  color: var(--muted);
+  font-size: 13px;
+  line-height: 1.65;
+}
+.readme blockquote p { margin: 4px 0; }
+.readme hr { border: 0; border-top: 1px solid var(--hair); margin: 22px 0; }
+.readme table { width: 100%; border-collapse: collapse; margin: 16px 0 20px; font-size: 12px; }
+.readme th, .readme td { padding: 7px 9px; border-bottom: 1px solid var(--hair); text-align: left; vertical-align: top; }
+.readme th { font-weight: 600; }
+.readme pre {
+  white-space: pre;
+  overflow-x: auto;
+  border-radius: 2px;
+  tab-size: 2;
+}
+.readme pre code {
+  background: transparent;
+  color: inherit;
+  padding: 0;
+  font-size: inherit;
+  white-space: inherit;
+}
+.readme code { white-space: pre-wrap; }
+.readme figure { margin: 18px 0; }
+.readme img { display: block; max-width: 100%; height: auto; margin: 10px 0; border: 1px solid var(--hair); background: #fff; }
+.readme figcaption { font-family: ui-monospace, SFMono-Regular, Menlo, monospace; font-size: 10px; color: var(--muted); }
+.readme h5, .readme h6 { font-size: 13px; margin: 16px 0 6px; }
+.readme details { margin: 16px 0; }
+.readme summary { cursor: pointer; }
+.readme input[type="checkbox"] { margin-right: 6px; }

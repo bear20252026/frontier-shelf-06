@@ -32,46 +32,20 @@
   details a { color:var(--ink); }
   .back { display:inline-block; margin-top:30px; font-size:11px; font-family:ui-monospace,monospace; color:var(--muted); }
 </style>
+  <link rel="stylesheet" href="readme.css?v=20261123a" />
 </head>
 <body>
 <div class="wrap">
   <div class="kicker">Frontier VI · Worlds &amp; wonders · repository record</div>
   <h1>lightgl.js</h1>
-  <p class="lede">evanw/lightgl.js. This is a local source dossier, rendered from the copy held in this room. It does not open the upstream repository and it does not send you to a raw source file.</p>
+  <p class="lede">evanw/lightgl.js. This is a local source dossier, rendered from the copy held in this room. Links inside the README resolve to the local copy where possible; external links open their original sources.</p>
   <div class="bar"><span>evanw/lightgl.js</span><span>local source</span></div>
   <p class="note">The full repository is vendored at <code>source/vendor/evanw/lightgl.js</code>.</p>
-  <div class="readme" id="readme"><p>Loading the vendored README…</p></div>
+  <div class="readme" id="readme" data-base="../source/vendor/evanw/lightgl.js/"><p>Loading the vendored README…</p></div>
   <details><summary>Top-level files in this repository</summary><ul><li><a href="../source/vendor/evanw/lightgl.js/.gitignore">.gitignore</a></li><li><a href="../source/vendor/evanw/lightgl.js/LICENSE">LICENSE</a></li><li><a href="../source/vendor/evanw/lightgl.js/README.md">README.md</a></li><li><a href="../source/vendor/evanw/lightgl.js/build.py">build.py</a></li></ul></details>
   <a class="back" href="../">← Back to Frontier VI</a>
 </div>
-<script>
-(async () => {
-  const base = "../source/vendor/evanw/lightgl.js/";
-  const names = ["README.md","readme.md","README.adoc","readme.adoc"];
-  let text = "";
-  for (const name of names) {
-    try {
-      const r = await fetch(base + name);
-      if (r.ok) { text = await r.text(); break; }
-    } catch (e) {}
-  }
-  const box = document.getElementById("readme");
-  if (!text) { box.innerHTML = "<p>The vendored copy has no README in the usual names.</p>"; return; }
-  const clean = text.replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;");
-  let html = clean
-    .replace(/!\[[^\]]*\]\([^)]*\)/g, "")
-    .replace(/```[^\n]*\n([\s\S]*?)```/g, (m, c) => "<pre><code>" + c + "</code></pre>")
-    .replace(/^#### (.*)$/gm, "<h4>$1</h4>")
-    .replace(/^### (.*)$/gm, "<h3>$1</h3>")
-    .replace(/^## (.*)$/gm, "<h2>$1</h2>")
-    .replace(/^# (.*)$/gm, "<h2>$1</h2>")
-    .replace(/^\s*[-*] (.*)$/gm, "<li>$1</li>")
-    .replace(/\[([^\]]+)\]\([^)]*\)/g, "<span class=\"ref\">$1</span>")
-    .replace(/`([^`]+)`/g, "<code>$1</code>")
-    .replace(/\*\*([^*]+)\*\*/g, "<b>$1</b>")
-    .replace(/\n{2,}/g, "</p><p>");
-  box.innerHTML = "<p>" + html + "</p>";
-})();
-</script>
+<script src="marked.umd.js?v=20261123a"></script>
+<script src="readme.js?v=20261123a"></script>
 </body>
 </html>
