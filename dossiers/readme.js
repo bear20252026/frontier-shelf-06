@@ -311,7 +311,9 @@
     const parser = global.marked;
     if (!parser || typeof parser.parse !== "function") throw new Error("marked is not loaded.");
 
-    const clean = stripBadgeLines(markdown);
+    const clean = stripBadgeLines(
+      String(markdown).replace(/\*\*([^*\n]*?)\[([^\]]+)\](\*\*:)/g, "**$1$2$3")
+    );
     const template = documentObject.createElement("template");
     template.innerHTML = parser.parse(clean, { gfm: true, breaks: false });
 
@@ -319,6 +321,12 @@
     sanitizeChildren(template.content, baseUrl);
     removeEmptyWrappers(template.content);
     demoteHeadings(template.content);
+    template.content.querySelectorAll("table").forEach((table) => {
+      const wrapper = documentObject.createElement("div");
+      wrapper.className = "table-scroll";
+      table.replaceWith(wrapper);
+      wrapper.appendChild(table);
+    });
 
     return template.innerHTML;
   }

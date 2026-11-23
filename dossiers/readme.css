@@ -22,6 +22,8 @@
 .readme blockquote p { margin: 4px 0; }
 .readme hr { border: 0; border-top: 1px solid var(--hair); margin: 22px 0; }
 .readme table { width: 100%; border-collapse: collapse; margin: 16px 0 20px; font-size: 12px; }
+.readme .table-scroll { margin: 16px 0 20px; overflow-x: auto; }
+.readme .table-scroll table { margin: 0; min-width: 100%; }
 .readme th, .readme td { padding: 7px 9px; border-bottom: 1px solid var(--hair); text-align: left; vertical-align: top; }
 .readme th { font-weight: 600; }
 .readme pre {
@@ -40,6 +42,12 @@
 .readme code { white-space: pre-wrap; }
 .readme figure { margin: 18px 0; }
 .readme img { display: block; max-width: 100%; height: auto; margin: 10px 0; border: 1px solid var(--hair); background: #fff; }
+.readme h1 img, .readme h2 img, .readme h3 img, .readme h4 img, .readme h5 img, .readme h6 img {
+  display: inline-block;
+  vertical-align: middle;
+  margin: 0 .35em 0 0;
+  border: 0;
+}
 .readme figcaption { font-family: ui-monospace, SFMono-Regular, Menlo, monospace; font-size: 10px; color: var(--muted); }
 .readme h5, .readme h6 { font-size: 13px; margin: 16px 0 6px; }
 .readme details { margin: 16px 0; }
